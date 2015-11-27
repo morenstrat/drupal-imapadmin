@@ -1,0 +1,7 @@
+.toolbar-icon-imapadmin-server-list:before {
+  background-image: url(../images/787878/imapadmin.svg);
+}
+.toolbar-icon-imapadmin-server-list:active:before,
+.toolbar-icon-imapadmin-server-list.is-active:before {
+  background-image: url(../images/000000/imapadmin.svg);
+}

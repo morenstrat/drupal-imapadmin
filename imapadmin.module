@@ -4,3 +4,14 @@
  * @file
  * IMAP Admin module.
  */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function imapadmin_page_attachments(array &$page) {
+  $account = \Drupal::currentUser();
+
+  if ($account->hasPermission('access toolbar') && $account->hasPermission('administer imap servers')) {
+    $page['#attached']['library'][] = 'imapadmin/toolbar';
+  }
+}

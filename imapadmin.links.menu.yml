@@ -1,0 +1,6 @@
+imapadmin.server.list:
+  title: IMAP Admin
+  description: 'Administer IMAP Servers.'
+  route_name: imapadmin.server.list
+  parent: system.admin
+  weight: 10
