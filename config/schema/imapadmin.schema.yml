@@ -1,0 +1,10 @@
+imapadmin.imapserver.*:
+  type: config_entity
+  label: 'IMAP server'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'

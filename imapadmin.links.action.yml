@@ -1,0 +1,5 @@
+imapadmin.server.add:
+  route_name: 'imapadmin.server.add'
+  title: 'Add IMAP server'
+  appears_on:
+    - imapadmin.server.list

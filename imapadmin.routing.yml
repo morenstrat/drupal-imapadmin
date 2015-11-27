@@ -1,0 +1,28 @@
+imapadmin.server.list:
+  path: '/admin/imap/server/list'
+  defaults:
+    _entity_list: 'imapserver'
+    _title: 'List IMAP servers'
+  requirements:
+    _permission: 'administer imap servers'
+imapadmin.server.add:
+  path: '/admin/imap/server/add'
+  defaults:
+    _entity_form: 'imapserver.add'
+    _title: 'Add IMAP server'
+  requirements:
+    _permission: 'administer imap servers'
+entity.imapserver.edit_form:
+  path: '/admin/imap/server/{imapserver}/edit'
+  defaults:
+    _entity_form: 'imapserver.edit'
+    _title: 'Edit IMAP server'
+  requirements:
+    _permission: 'administer imap servers'
+entity.imapserver.delete_form:
+  path: '/admin/imap/server/{imapserver}/delete'
+  defaults:
+    _entity_form: 'imapserver.delete'
+    _title: 'Delete IMAP server'
+  requirements:
+    _permission: 'administer imap servers'

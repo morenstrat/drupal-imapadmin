@@ -1,0 +1,4 @@
+administer imap servers:
+  title: 'Administer IMAP servers'
+  description: 'Add, list, edit and delete IMAP servers.'
+  restrict access: TRUE
