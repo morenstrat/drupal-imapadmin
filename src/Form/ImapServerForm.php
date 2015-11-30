@@ -101,7 +101,7 @@ class ImapServerForm extends EntityForm {
       '#required' => TRUE,
     );
 
-    $id = $imapserver>id();
+    $id = $imapserver->id();
     $description = $this->t('The IMAP server admin password.');
 
     if ($this->exist($id)) {
