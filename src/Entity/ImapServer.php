@@ -52,4 +52,46 @@ class ImapServer extends ConfigEntityBase implements ImapServerInterface {
    */
   public $label;
 
+  /**
+   * The imapserver hostname.
+   *
+   * @var string
+   */
+  protected $hostname;
+
+  /**
+   * The imapserver connection encryption.
+   *
+   * @var string
+   */
+  protected $encryption = 'tls';
+
+  /**
+   * Validate the imapserver certificate.
+   *
+   * @var boolean
+   */
+  protected $validate_cert = TRUE;
+
+  /**
+   * The imapserver connection tcp port.
+   *
+   * @var integer
+   */
+  protected $port = 143;
+
+  /**
+   * The imapserver admin username.
+   *
+   * @var string
+   */
+  protected $username;
+
+  /**
+   * The imapserver admin password.
+   *
+   * @var string
+   */
+  protected $password;
+
 }

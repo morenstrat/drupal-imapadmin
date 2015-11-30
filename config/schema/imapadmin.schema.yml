@@ -8,3 +8,21 @@ imapadmin.imapserver.*:
     label:
       type: label
       label: 'Label'
+    hostname:
+      type: string
+      label: 'Hostname'
+    encryption:
+      type: string
+      label: 'Encryption'
+    validate_cert:
+      type: boolean
+      label: 'Validate certificate'
+    port:
+      type: integer
+      label: 'TCP port'
+    username:
+      type: string
+      label: 'Username'
+    password:
+      type: string
+      label: 'Password'

@@ -58,6 +58,67 @@ class ImapServerForm extends EntityForm {
       ),
       '#disabled' => !$imapserver->isNew(),
     );
+    $form['hostname'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Hostname'),
+      '#maxlength' => 255,
+      '#default_value' => $imapserver->get('hostname'),
+      '#description' => $this->t('The IMAP server hostname.'),
+      '#required' => TRUE,
+    );
+    $form['encryption'] = array(
+      '#type' => 'select',
+      '#title' => $this->t('Encryption'),
+      '#options' => array(
+        'tls' => 'TLS',
+        'ssl' => 'SSL',
+        'notls' => 'No-TLS',
+      ),
+      '#default_value' => $imapserver->get('encryption'),
+      '#description' => $this->t('The IMAP server connection encryption.'),
+      '#required' => TRUE,
+    );
+    $form['validate_cert'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Validate certificate'),
+      '#default_value' => $imapserver->get('validate_cert'),
+      '#description' => $this->t('Validate the IMAP server certificate.'),
+    );
+    $form['port'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('TCP Port'),
+      '#maxlength' => 5,
+      '#default_value' => $imapserver->get('port'),
+      '#description' => $this->t('The IMAP server connection TCP port.'),
+      '#required' => TRUE,
+    );
+    $form['username'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Username'),
+      '#maxlength' => 255,
+      '#default_value' => $imapserver->get('username'),
+      '#description' => $this->t('The IMAP server admin username.'),
+      '#required' => TRUE,
+    );
+
+    $id = $imapserver>id();
+    $description = $this->t('The IMAP server admin password.');
+
+    if ($this->exist($id)) {
+      $required = FALSE;
+      $description .= ' ' . $this->t('Leave empty to keep stored password.');
+    }
+    else {
+      $required = TRUE;
+    }
+
+    $form['password'] = array(
+      '#type' => 'password',
+      '#title' => $this->t('Password'),
+      '#maxlength' => 255,
+      '#description' => $description,
+      '#required' => $required,
+    );
 
     return $form;
   }
@@ -67,6 +128,15 @@ class ImapServerForm extends EntityForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
     $imapserver = $this->entity;
+    $id = $imapserver->id();
+    $password = $form_state->getValue('password');
+
+    if (empty($password) && $this->exist($id)) {
+      $stored_entity = $this->entityTypeManager->getStorage('imapserver')->load($id);
+      $stored_password = $stored_entity->get('password');
+      $imapserver->set('password', $stored_password);
+    }
+
     $status = $imapserver->save();
 
     if ($status) {
