@@ -1,0 +1,3 @@
+services:
+  imapadmin.imapmanager:
+    class: Drupal\imapadmin\ImapManager
