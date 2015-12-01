@@ -1,3 +1,5 @@
 services:
   imapadmin.imapmailboxmanager:
     class: Drupal\imapadmin\ImapMailboxManager
+  imapadmin.imapaccountmanager:
+    class: Drupal\imapadmin\ImapAccountManager
